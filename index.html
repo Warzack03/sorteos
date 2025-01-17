@@ -196,19 +196,30 @@
             simulatedParticipants.forEach(user => {
                 let meetsRequirements = true;
 
-                console.log("Pintamos condicion 1: " + (likeCheck && !hasLiked(postLink, user, token)));
-                console.log("Pintamos condicion likeCheck: " + likeCheck);
-                console.log("Pintamos condicion hasLiked: " + hasLiked(postLink, user, token));
-                console.log("Pintamos condicion hasLiked (-) : " + !hasLiked(postLink, user, token));
-                if (likeCheck && !hasLiked(postLink, user, token)) {
+                let liked = false;
+                hasLiked(postLink, user, token).then((value) => {
+                    liked = value
+                });
+                
+                let follow = false;
+                isFollowing(postLink, user, token).then((value) => {
+                    follow = value
+                });
+                
+                let comment = false;
+                hasCommented(postLink, user, token).then((value) => {
+                    comment = value
+                });
+
+                if (likeCheck && !liked) {
                     console.log("Entra filtro like");
                     meetsRequirements = false;
                 }
-                if (followCheck && !isFollowing(user, token)) {
+                if (followCheck && !follow) {
                     console.log("Entra filtro follow");
                     meetsRequirements = false;
                 }
-                if (commentCheck && !hasCommented(postLink, user, token)) {
+                if (commentCheck && !comment) {
                     console.log("Entra filtro comment");
                     meetsRequirements = false;
                 }
