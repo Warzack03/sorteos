@@ -208,7 +208,9 @@
                 
                 let comment = false;
                 hasCommented(postLink, user, token).then((value) => {
+                    console.log("CValor beforeee: " +comment);
                     comment = value
+                    console.log("CValor after: " +comment);
                 });
 
                 if (likeCheck && (liked == false)) {
@@ -220,9 +222,6 @@
                     meetsRequirements = false;
                 }
                 
-                console.log("Value comment condition: " + commentCheck && (comment == false));
-                console.log("Value commentCheck condition: " + commentCheck);
-                console.log("Value comment condition 2: " + comment);
                 if (commentCheck && (comment == false)) {
                     console.log("Entra filtro comment");
                     meetsRequirements = false;
