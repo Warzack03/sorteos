@@ -210,15 +210,12 @@
                 let comment = hasCommented(postLink, user, token);
 
                 if (likeCheck && (liked == false)) {
-                    console.log("Entra filtro like");
                     meetsRequirements = false;
                 }
                 if (followCheck && (follow == false)) {
-                    console.log("Entra filtro follow");
                     meetsRequirements = false;
                 }
                 if (commentCheck && (comment == false)) {
-                    console.log("Entra filtro comment");
                     meetsRequirements = false;
                 }
 
@@ -235,21 +232,18 @@
         // Funciones de simulación de interacción con la API de Instagram
         function hasLiked(postLink, user, token) {
             let response = false;
-            console.log("Condition like for user: " + user + " is -> " + response);
             // Aquí va la lógica para comprobar si el usuario ha dado like a la publicación
             return response; // Simulación
         }
 
         function isFollowing(user, token) {
             let response = true;
-            console.log("Condition follow for user: " + user + " is -> " + response);
             // Aquí va la lógica para comprobar si el usuario ha dado like a la publicación
             return response; // Simulación
         }
 
         function hasCommented(postLink, user, token) {
             let response = true;
-            console.log("Condition comment for user: " + user + " is -> " + response);
             // Aquí va la lógica para comprobar si el usuario ha dado like a la publicación
             return response; // Simulación
         }
