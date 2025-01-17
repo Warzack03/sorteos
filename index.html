@@ -32,7 +32,7 @@
         margin: 1rem 0;
         font-size: 1rem;
     }
-    .post-link-label {
+    .post-link-label .post-client-label {
         display: block;
         margin: 0 0 0.3rem; /* Adjusted margin to bring label closer to the input */
         font-size: 1rem;
@@ -96,7 +96,7 @@
     <main>
         <form id="sorteo-form">
             <!-- Nuevo select para elegir el cliente -->
-            <label for="client-select">Selecciona el cliente:</label>
+            <label class="post-client-label" for="client-select">Selecciona el cliente:</label>
             <select id="client-select" required>
                 <option value="">--Seleccionar cliente--</option>
                 <option value="Cliente1">Cliente 1</option>
