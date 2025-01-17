@@ -196,6 +196,10 @@
             simulatedParticipants.forEach(user => {
                 let meetsRequirements = true;
 
+                console.log("Pintamos condicion 1: " + (likeCheck && !hasLiked(postLink, user, token)));
+                console.log("Pintamos condicion likeCheck: " + likeCheck);
+                console.log("Pintamos condicion hasLiked: " + hasLiked(postLink, user, token));
+                console.log("Pintamos condicion hasLiked (-) : " + !hasLiked(postLink, user, token));
                 if (likeCheck && !hasLiked(postLink, user, token)) {
                     console.log("Entra filtro like");
                     meetsRequirements = false;
