@@ -9,33 +9,48 @@
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #f9f9f9;
+            background-color: #eef2f5;
         }
         header {
             background-color: #4CAF50;
             color: white;
-            padding: 1rem;
+            padding: 1.5rem;
             text-align: center;
+            font-size: 1.5rem;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
         }
         main {
             max-width: 600px;
             margin: 2rem auto;
             background: white;
             padding: 2rem;
-            border-radius: 8px;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         }
         label {
             display: block;
             margin: 1rem 0;
+            font-size: 1rem;
+        }
+        input[type="url"] {
+            width: 100%;
+            padding: 0.8rem;
+            font-size: 1rem;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            margin-top: 0.5rem;
+        }
+        input[type="checkbox"] {
+            margin-right: 0.5rem;
         }
         button {
             background-color: #4CAF50;
             color: white;
             border: none;
             padding: 0.8rem 1.5rem;
-            border-radius: 4px;
+            border-radius: 5px;
             cursor: pointer;
+            font-size: 1rem;
         }
         button:hover {
             background-color: #45a049;
@@ -45,7 +60,22 @@
             padding: 1rem;
             background-color: #e7f5e6;
             border: 1px solid #c2e4c0;
-            border-radius: 4px;
+            border-radius: 5px;
+        }
+        .error {
+            color: red;
+            margin: 1rem 0 0;
+            font-size: 0.9rem;
+        }
+        @media (max-width: 768px) {
+            main {
+                margin: 1rem;
+                padding: 1.5rem;
+            }
+            header {
+                font-size: 1.25rem;
+                padding: 1rem;
+            }
         }
     </style>
 </head>
@@ -70,6 +100,8 @@
                 <input type="checkbox" id="comment-check"> Comentar la publicación
             </label>
 
+            <p class="error" id="error-message" style="display: none;">Por favor, selecciona al menos un requisito y proporciona un link válido.</p>
+
             <button type="button" id="start-draw">Realizar sorteo</button>
         </form>
 
@@ -86,10 +118,15 @@
             const followCheck = document.getElementById('follow-check').checked;
             const commentCheck = document.getElementById('comment-check').checked;
 
-            if (!postLink) {
-                alert('Por favor, introduce un link válido de la publicación.');
+            // Validar que se ha proporcionado el link y al menos un checkbox
+            if (!postLink || (!likeCheck && !followCheck && !commentCheck)) {
+                const errorMessage = document.getElementById('error-message');
+                errorMessage.style.display = 'block';
                 return;
             }
+
+            // Ocultar mensaje de error si todo está correcto
+            document.getElementById('error-message').style.display = 'none';
 
             // Simulación: Mostrar requisitos seleccionados y "ganador" aleatorio
             const simulatedParticipants = ['Usuario1', 'Usuario2', 'Usuario3', 'Usuario4', 'Usuario5'];
