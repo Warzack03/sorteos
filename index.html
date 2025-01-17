@@ -208,7 +208,6 @@
                 
                 let comment = false;
                 hasCommented(postLink, user, token).then((value) => {
-                    console.log("Value comment for user: " + user + " is -> " + value);
                     comment = value
                 });
 
@@ -220,6 +219,10 @@
                     console.log("Entra filtro follow");
                     meetsRequirements = false;
                 }
+                
+                console.log("Value comment condition: " + commentCheck && (comment == false));
+                console.log("Value commentCheck condition: " + commentCheck);
+                console.log("Value comment condition 2: " + comment);
                 if (commentCheck && (comment == false)) {
                     console.log("Entra filtro comment");
                     meetsRequirements = false;
