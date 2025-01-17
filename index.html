@@ -29,16 +29,16 @@
         }
         label {
             display: block;
-            margin: 1rem 0;
+            margin: 0.5rem 0 0.3rem; /* Reduced margin below and above the label */
             font-size: 1rem;
         }
         input[type="url"] {
-            width: 100%;
+            width: calc(100% - 10px); /* Added padding for right margin */
             padding: 0.8rem;
             font-size: 1rem;
             border: 1px solid #ccc;
             border-radius: 5px;
-            margin-top: 0.5rem;
+            margin-top: 0.2rem; /* Slight margin to align nicely with label */
         }
         input[type="checkbox"] {
             margin-right: 0.5rem;
