@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sorteo Instagram</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f9f9f9;
+        }
+        header {
+            background-color: #4CAF50;
+            color: white;
+            padding: 1rem;
+            text-align: center;
+        }
+        main {
+            max-width: 600px;
+            margin: 2rem auto;
+            background: white;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        label {
+            display: block;
+            margin: 1rem 0;
+        }
+        button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 0.8rem 1.5rem;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        .result {
+            margin-top: 2rem;
+            padding: 1rem;
+            background-color: #e7f5e6;
+            border: 1px solid #c2e4c0;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Sorteo de Instagram</h1>
+    </header>
+    <main>
+        <form id="sorteo-form">
+            <label for="post-link">Link de la publicación:</label>
+            <input type="url" id="post-link" placeholder="https://www.instagram.com/p/XXXX" required>
+
+            <label>
+                <input type="checkbox" id="like-check"> Dar like a la publicación
+            </label>
+
+            <label>
+                <input type="checkbox" id="follow-check"> Seguir en Instagram
+            </label>
+
+            <label>
+                <input type="checkbox" id="comment-check"> Comentar la publicación
+            </label>
+
+            <button type="button" id="start-draw">Realizar sorteo</button>
+        </form>
+
+        <div class="result" id="result" style="display: none;">
+            <h2>Ganador:</h2>
+            <p id="winner-name">(Esperando sorteo...)</p>
+        </div>
+    </main>
+
+    <script>
+        document.getElementById('start-draw').addEventListener('click', async () => {
+            const postLink = document.getElementById('post-link').value;
+            const likeCheck = document.getElementById('like-check').checked;
+            const followCheck = document.getElementById('follow-check').checked;
+            const commentCheck = document.getElementById('comment-check').checked;
+
+            if (!postLink) {
+                alert('Por favor, introduce un link válido de la publicación.');
+                return;
+            }
+
+            // Simulación: Mostrar requisitos seleccionados y "ganador" aleatorio
+            const simulatedParticipants = ['Usuario1', 'Usuario2', 'Usuario3', 'Usuario4', 'Usuario5'];
+            const randomWinner = simulatedParticipants[Math.floor(Math.random() * simulatedParticipants.length)];
+
+            document.getElementById('winner-name').textContent = randomWinner;
+            document.getElementById('result').style.display = 'block';
+        });
+    </script>
+</body>
+</html>
