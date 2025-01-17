@@ -89,6 +89,17 @@
     </header>
     <main>
         <form id="sorteo-form">
+            <!-- Nuevo select para elegir el cliente -->
+            <label for="client-select">Selecciona el cliente:</label>
+            <select id="client-select" required>
+                <option value="">--Seleccionar cliente--</option>
+                <option value="Cliente1">Cliente 1</option>
+                <option value="Cliente2">Cliente 2</option>
+                <option value="Cliente3">Cliente 3</option>
+                <option value="Cliente4">Cliente 4</option>
+                <option value="Cliente5">Cliente 5</option>
+            </select>
+
             <label class="post-link-label" for="post-link">Link de la publicación:</label>
             <input type="url" id="post-link" placeholder="https://www.instagram.com/p/XXXX" required>
 
@@ -104,7 +115,7 @@
                 <input type="checkbox" id="comment-check"> Comentar la publicación
             </label>
 
-            <p class="error" id="error-message" style="display: none;">Por favor, selecciona al menos un requisito y proporciona un link válido.</p>
+            <p class="error" id="error-message" style="display: none;">Por favor, selecciona un cliente, un link válido y al menos un requisito.</p>
 
             <button type="button" id="start-draw">Realizar sorteo</button>
         </form>
@@ -117,13 +128,14 @@
 
     <script>
         document.getElementById('start-draw').addEventListener('click', async () => {
+            const clientSelect = document.getElementById('client-select').value;
             const postLink = document.getElementById('post-link').value;
             const likeCheck = document.getElementById('like-check').checked;
             const followCheck = document.getElementById('follow-check').checked;
             const commentCheck = document.getElementById('comment-check').checked;
 
-            // Validar que se ha proporcionado el link y al menos un checkbox
-            if (!postLink || (!likeCheck && !followCheck && !commentCheck)) {
+            // Validar que se ha seleccionado un cliente, proporcionado el link y al menos un checkbox
+            if (!clientSelect || !postLink || (!likeCheck && !followCheck && !commentCheck)) {
                 const errorMessage = document.getElementById('error-message');
                 errorMessage.style.display = 'block';
                 return;
@@ -136,7 +148,7 @@
             const simulatedParticipants = ['Usuario1', 'Usuario2', 'Usuario3', 'Usuario4', 'Usuario5'];
             const randomWinner = simulatedParticipants[Math.floor(Math.random() * simulatedParticipants.length)];
 
-            document.getElementById('winner-name').textContent = randomWinner;
+            document.getElementById('winner-name').textContent = `Cliente: ${clientSelect} - Ganador: ${randomWinner}`;
             document.getElementById('result').style.display = 'block';
         });
     </script>
