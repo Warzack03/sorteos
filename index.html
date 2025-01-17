@@ -148,6 +148,7 @@
             const likeCheck = document.getElementById('like-check').checked;
             const followCheck = document.getElementById('follow-check').checked;
             const commentCheck = document.getElementById('comment-check').checked;
+            const resultElement = document.getElementById('result');
 
             // Validar que se ha seleccionado un cliente, proporcionado el link y al menos un checkbox
             if (!clientSelect || !postLink || (!likeCheck && !followCheck && !commentCheck)) {
@@ -173,9 +174,7 @@
             resultElement.style.borderColor = '#c2e4c0';  // Borde de color verde más oscuro
 
             // Si no hay participantes válidos, mostrar mensaje
-            if (participants.length === 0) {
-                const resultElement = document.getElementById('result');
-    
+            if (participants.length === 0) {    
                 // Cambiar el color de fondo a rojo si no hay ganadores
                 resultElement.style.backgroundColor = '#f8d7da';  // Color rojo suave
                 resultElement.style.borderColor = '#f5c6cb';  // Borde de color más oscuro para rojo
