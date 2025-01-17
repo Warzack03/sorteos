@@ -192,6 +192,7 @@
             const simulatedParticipants = ['Usuario1', 'Usuario2', 'Usuario3', 'Usuario4', 'Usuario5'];
 
             // Filtrar participantes según los requisitos seleccionados
+            console.log("Before filter: " + simulatedParticipants);
             simulatedParticipants.forEach(user => {
                 let meetsRequirements = true;
 
@@ -205,11 +206,13 @@
                     meetsRequirements = false;
                 }
 
+                console.log("Condition for user: " + user + " is -> " + meetsRequirements);
                 if (meetsRequirements) {
                     participants.push(user);
                 }
             });
 
+            console.log("After filter: " + simulatedParticipants);
             return participants;
         }
 
