@@ -195,23 +195,9 @@
             console.log("Before filter: " + simulatedParticipants);
             simulatedParticipants.forEach(user => {
                 let meetsRequirements = true;
-
-                let liked = false;
-                hasLiked(postLink, user, token).then((value) => {
-                    liked = value
-                });
-                
-                let follow = false;
-                isFollowing(user, token).then((value) => {
-                    follow = value
-                });
-                
-                let comment = false;
-                hasCommented(postLink, user, token).then((value) => {
-                    console.log("CValor beforeee: " +comment);
-                    comment = value
-                    console.log("CValor after: " +comment);
-                });
+                let liked = hasLiked(postLink, user, token);
+                let follow = isFollowing(user, token);
+                let comment = hasCommented(postLink, user, token);
 
                 if (likeCheck && (liked == false)) {
                     console.log("Entra filtro like");
@@ -221,7 +207,6 @@
                     console.log("Entra filtro follow");
                     meetsRequirements = false;
                 }
-                
                 if (commentCheck && (comment == false)) {
                     console.log("Entra filtro comment");
                     meetsRequirements = false;
