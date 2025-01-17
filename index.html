@@ -127,7 +127,7 @@
         </form>
 
         <div class="result" id="result" style="display: none;">
-            <h2>Ganador:</h2>
+            <h2 id="winner-text">Ganador:</h2>
             <p id="winner-name">(Esperando sorteo...)</p>
         </div>
     </main>
@@ -149,6 +149,7 @@
             const followCheck = document.getElementById('follow-check').checked;
             const commentCheck = document.getElementById('comment-check').checked;
             const resultElement = document.getElementById('result');
+            const winnerText = document.getElementById('winner-text');
 
             // Validar que se ha seleccionado un cliente, proporcionado el link y al menos un checkbox
             if (!clientSelect || !postLink || (!likeCheck && !followCheck && !commentCheck)) {
@@ -172,12 +173,14 @@
             // Restablecer el color del cuadro a verde antes de mostrar el ganador
             resultElement.style.backgroundColor = '#e7f5e6';  // Color verde claro
             resultElement.style.borderColor = '#c2e4c0';  // Borde de color verde más oscuro
+            winnerText.style.display = 'block';  // Borde de color verde más oscuro
 
             // Si no hay participantes válidos, mostrar mensaje
             if (participants.length === 0) {    
                 // Cambiar el color de fondo a rojo si no hay ganadores
                 resultElement.style.backgroundColor = '#f8d7da';  // Color rojo suave
                 resultElement.style.borderColor = '#f5c6cb';  // Borde de color más oscuro para rojo
+                winnerText.style.display = 'none';  // Borde de color verde más oscuro
                 
                 document.getElementById('winner-name').textContent = "No hay participantes que cumplan con los requisitos.";
                 resultElement.style.display = 'block';
