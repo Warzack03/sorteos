@@ -168,10 +168,20 @@
             // Consultar la API de Instagram según los requisitos seleccionados
             const participants = await getParticipants(postLink, token, likeCheck, followCheck, commentCheck);
 
+            // Restablecer el color del cuadro a verde antes de mostrar el ganador
+            resultElement.style.backgroundColor = '#e7f5e6';  // Color verde claro
+            resultElement.style.borderColor = '#c2e4c0';  // Borde de color verde más oscuro
+
             // Si no hay participantes válidos, mostrar mensaje
             if (participants.length === 0) {
+                const resultElement = document.getElementById('result');
+    
+                // Cambiar el color de fondo a rojo si no hay ganadores
+                resultElement.style.backgroundColor = '#f8d7da';  // Color rojo suave
+                resultElement.style.borderColor = '#f5c6cb';  // Borde de color más oscuro para rojo
+                
                 document.getElementById('winner-name').textContent = "No hay participantes que cumplan con los requisitos.";
-                document.getElementById('result').style.display = 'block';
+                resultElement.style.display = 'block';
                 return;
             }
 
