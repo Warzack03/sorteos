@@ -5,83 +5,89 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sorteo Instagram</title>
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #eef2f5;
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #eef2f5;
+    }
+    header {
+        background-color: #4CAF50;
+        color: white;
+        padding: 1.5rem;
+        text-align: center;
+        font-size: 1.5rem;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    }
+    main {
+        max-width: 600px;
+        margin: 2rem auto;
+        background: white;
+        padding: 2rem;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+    label {
+        display: block;
+        margin: 1rem 0;
+        font-size: 1rem;
+    }
+    .post-link-label {
+        display: block;
+        margin: 0 0 0.3rem; /* Adjusted margin to bring label closer to the input */
+        font-size: 1rem;
+    }
+    input[type="url"], select {
+        width: calc(100% - 1rem); /* Ensures the input and select span the same width */
+        padding: 0.8rem;
+        font-size: 1rem;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        background-color: #fafafa; /* Light background to make the input more visible */
+        margin-bottom: 1rem; /* Add space below the field */
+    }
+    select {
+        background-color: #fafafa; /* Soft background for select */
+        cursor: pointer; /* Show pointer on hover for select */
+    }
+    input[type="checkbox"] {
+        margin-right: 0.5rem;
+    }
+    button {
+        background-color: #4CAF50;
+        color: white;
+        border: none;
+        padding: 0.8rem 1.5rem;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 1rem;
+    }
+    button:hover {
+        background-color: #45a049;
+    }
+    .result {
+        margin-top: 2rem;
+        padding: 1rem;
+        background-color: #e7f5e6;
+        border: 1px solid #c2e4c0;
+        border-radius: 5px;
+    }
+    .error {
+        color: red;
+        margin: 1rem 0 0;
+        font-size: 0.9rem;
+    }
+    @media (max-width: 768px) {
+        main {
+            margin: 1rem;
+            padding: 1.5rem;
         }
         header {
-            background-color: #4CAF50;
-            color: white;
-            padding: 1.5rem;
-            text-align: center;
-            font-size: 1.5rem;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-        }
-        main {
-            max-width: 600px;
-            margin: 2rem auto;
-            background: white;
-            padding: 2rem;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        }
-        label {
-            display: block;
-            margin: 1rem 0;
-            font-size: 1rem;
-        }
-        .post-link-label {
-            display: block;
-            margin: 0 0 0.3rem; /* Adjusted margin to bring label closer to the input */
-            font-size: 1rem;
-        }
-        input[type="url"] {
-            width: calc(100% - 1rem); /* Added margin to the right */
-            padding: 0.8rem;
-            font-size: 1rem;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-        }
-        input[type="checkbox"] {
-            margin-right: 0.5rem;
-        }
-        button {
-            background-color: #4CAF50;
-            color: white;
-            border: none;
-            padding: 0.8rem 1.5rem;
-            border-radius: 5px;
-            cursor: pointer;
-            font-size: 1rem;
-        }
-        button:hover {
-            background-color: #45a049;
-        }
-        .result {
-            margin-top: 2rem;
+            font-size: 1.25rem;
             padding: 1rem;
-            background-color: #e7f5e6;
-            border: 1px solid #c2e4c0;
-            border-radius: 5px;
         }
-        .error {
-            color: red;
-            margin: 1rem 0 0;
-            font-size: 0.9rem;
-        }
-        @media (max-width: 768px) {
-            main {
-                margin: 1rem;
-                padding: 1.5rem;
-            }
-            header {
-                font-size: 1.25rem;
-                padding: 1rem;
-            }
-        }
-    </style>
+    }
+</style>
 </head>
 <body>
     <header>
@@ -210,7 +216,7 @@
         // Funciones de simulación de interacción con la API de Instagram
         async function hasLiked(postLink, user, token) {
             // Aquí va la lógica para comprobar si el usuario ha dado like a la publicación
-            return true; // Simulación
+            return false; // Simulación
         }
 
         async function isFollowing(user, token) {
