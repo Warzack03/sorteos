@@ -218,18 +218,24 @@
 
         // Funciones de simulación de interacción con la API de Instagram
         async function hasLiked(postLink, user, token) {
+            let response = false;
+            console.log("Condition for user: " + user + " is -> " + response);
             // Aquí va la lógica para comprobar si el usuario ha dado like a la publicación
-            return false; // Simulación
+            return response; // Simulación
         }
 
         async function isFollowing(user, token) {
-            // Aquí va la lógica para comprobar si el usuario está siguiendo
-            return true; // Simulación
+            let response = true;
+            console.log("Condition for user: " + user + " is -> " + response);
+            // Aquí va la lógica para comprobar si el usuario ha dado like a la publicación
+            return response; // Simulación
         }
 
         async function hasCommented(postLink, user, token) {
-            // Aquí va la lógica para comprobar si el usuario ha comentado la publicación
-            return true; // Simulación
+            let response = true;
+            console.log("Condition for user: " + user + " is -> " + response);
+            // Aquí va la lógica para comprobar si el usuario ha dado like a la publicación
+            return response; // Simulación
         }
     </script>
 </body>
