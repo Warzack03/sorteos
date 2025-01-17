@@ -127,6 +127,15 @@
     </main>
 
     <script>
+        // Mapa de clientes con sus tokens de acceso
+        const accessTokens = {
+            'Cliente1': 'TOKEN_CLIENTE_1',
+            'Cliente2': 'TOKEN_CLIENTE_2',
+            'Cliente3': 'TOKEN_CLIENTE_3',
+            'Cliente4': 'TOKEN_CLIENTE_4',
+            'Cliente5': 'TOKEN_CLIENTE_5'
+        };
+
         document.getElementById('start-draw').addEventListener('click', async () => {
             const clientSelect = document.getElementById('client-select').value;
             const postLink = document.getElementById('post-link').value;
@@ -144,13 +153,75 @@
             // Ocultar mensaje de error si todo está correcto
             document.getElementById('error-message').style.display = 'none';
 
-            // Simulación: Mostrar requisitos seleccionados y "ganador" aleatorio
-            const simulatedParticipants = ['Usuario1', 'Usuario2', 'Usuario3', 'Usuario4', 'Usuario5'];
-            const randomWinner = simulatedParticipants[Math.floor(Math.random() * simulatedParticipants.length)];
+            const token = accessTokens[clientSelect];
+            if (!token) {
+                alert("Token de acceso no disponible para este cliente.");
+                return;
+            }
 
-            document.getElementById('winner-name').textContent = `Cliente: ${clientSelect} - Ganador: ${randomWinner}`;
+            // Consultar la API de Instagram según los requisitos seleccionados
+            const participants = await getParticipants(postLink, token, likeCheck, followCheck, commentCheck);
+
+            // Si no hay participantes válidos, mostrar mensaje
+            if (participants.length === 0) {
+                document.getElementById('winner-name').textContent = "No hay participantes que cumplan con los requisitos.";
+                document.getElementById('result').style.display = 'block';
+                return;
+            }
+
+            // Seleccionar ganador aleatorio
+            const randomWinner = participants[Math.floor(Math.random() * participants.length)];
+            document.getElementById('winner-name').textContent = `Ganador: ${randomWinner}`;
             document.getElementById('result').style.display = 'block';
         });
+
+        // Función para obtener los participantes de la API de Instagram
+        async function getParticipants(postLink, token, likeCheck, followCheck, commentCheck) {
+            const participants = [];
+
+            // Aquí debería ir la lógica para hacer las peticiones a la API de Instagram
+            // Dependiendo de los requisitos seleccionados, hacemos las consultas correspondientes
+
+            // Simulación de obtención de participantes
+            const simulatedParticipants = ['Usuario1', 'Usuario2', 'Usuario3', 'Usuario4', 'Usuario5'];
+
+            // Filtrar participantes según los requisitos seleccionados
+            simulatedParticipants.forEach(user => {
+                let meetsRequirements = true;
+
+                if (likeCheck && !hasLiked(postLink, user, token)) {
+                    meetsRequirements = false;
+                }
+                if (followCheck && !isFollowing(user, token)) {
+                    meetsRequirements = false;
+                }
+                if (commentCheck && !hasCommented(postLink, user, token)) {
+                    meetsRequirements = false;
+                }
+
+                if (meetsRequirements) {
+                    participants.push(user);
+                }
+            });
+
+            return participants;
+        }
+
+        // Funciones de simulación de interacción con la API de Instagram
+        async function hasLiked(postLink, user, token) {
+            // Aquí va la lógica para comprobar si el usuario ha dado like a la publicación
+            return true; // Simulación
+        }
+
+        async function isFollowing(user, token) {
+            // Aquí va la lógica para comprobar si el usuario está siguiendo
+            return true; // Simulación
+        }
+
+        async function hasCommented(postLink, user, token) {
+            // Aquí va la lógica para comprobar si el usuario ha comentado la publicación
+            return true; // Simulación
+        }
     </script>
 </body>
 </html>
