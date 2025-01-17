@@ -202,24 +202,25 @@
                 });
                 
                 let follow = false;
-                isFollowing(postLink, user, token).then((value) => {
+                isFollowing(user, token).then((value) => {
                     follow = value
                 });
                 
                 let comment = false;
                 hasCommented(postLink, user, token).then((value) => {
+                    console.log("Value comment for user: " + user + " is -> " value);
                     comment = value
                 });
 
-                if (likeCheck && !liked) {
+                if (likeCheck && (liked == false)) {
                     console.log("Entra filtro like");
                     meetsRequirements = false;
                 }
-                if (followCheck && !follow) {
+                if (followCheck && (follow == false)) {
                     console.log("Entra filtro follow");
                     meetsRequirements = false;
                 }
-                if (commentCheck && !comment) {
+                if (commentCheck && (comment == false)) {
                     console.log("Entra filtro comment");
                     meetsRequirements = false;
                 }
